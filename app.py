@@ -18,6 +18,7 @@ from PIL import Image
 try:
     import cv2
     CV2_AVAILABLE = True
+except ImportError:
     CV2_AVAILABLE = False
     st.warning("OpenCV not available. Genre detection will use basic analysis.")
 
