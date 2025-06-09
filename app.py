@@ -46,7 +46,7 @@ def analyze_sentiment(text):
     else:
         return "positive", 0.5
 
-def scrape_imdb_reviews_simple(movie_id, max_reviews=10):
+def scrape_imdb_reviews_simple(movie_id, max_reviews=30):
     """Simple IMDb review scraping using requests"""
     try:
         headers = {
@@ -98,7 +98,27 @@ def get_sample_reviews_for_movie(movie_id):
             "A timeless classic that everyone should watch",
             "Beautiful cinematography and powerful narrative",
             "Incredibly moving and well-crafted story",
-            "Outstanding film that stands the test of time"
+            "Outstanding film that stands the test of time",
+            "Frank Darabont's direction is absolutely flawless",
+            "The friendship between Andy and Red is beautifully portrayed",
+            "Every scene serves a purpose in this masterful narrative",
+            "Thomas Newman's score perfectly complements the story",
+            "Roger Deakins' cinematography is breathtaking",
+            "The message of hope and redemption resonates deeply",
+            "Brilliant adaptation of Stephen King's novella",
+            "The supporting cast delivers exceptional performances",
+            "A film that grows more meaningful with each viewing",
+            "Perfect pacing and emotional depth throughout",
+            "The ending is both satisfying and emotionally powerful",
+            "Outstanding production design and attention to detail",
+            "A rare film that lives up to its reputation",
+            "Incredible character arcs and development",
+            "The dialogue is natural and deeply meaningful",
+            "A story about friendship that transcends all barriers",
+            "Perfectly balances darkness with hope and light",
+            "The prison setting becomes a character itself",
+            "A film that reminds us of the power of human spirit",
+            "An absolute masterpiece of American cinema"
         ],
         'tt0468569': [  # The Dark Knight
             "Heath Ledger's Joker performance is absolutely incredible",
@@ -110,7 +130,27 @@ def get_sample_reviews_for_movie(movie_id):
             "Incredible performances from the entire cast",
             "Perfect balance of action, drama, and suspense",
             "Masterful filmmaking at its finest",
-            "A dark and compelling take on Batman"
+            "A dark and compelling take on Batman",
+            "Heath Ledger's final performance is haunting and brilliant",
+            "Christian Bale brings depth to the Batman character",
+            "The moral complexity of the story is fascinating",
+            "Outstanding practical effects and stunts",
+            "Gary Oldman's Commissioner Gordon is perfectly cast",
+            "The bank heist opening sequence is incredible",
+            "Aaron Eckhart's Two-Face transformation is compelling",
+            "Hans Zimmer's score creates perfect tension",
+            "The film explores themes of chaos vs order brilliantly",
+            "Every action sequence serves the story perfectly",
+            "The interrogation scene between Batman and Joker is iconic",
+            "Michael Caine brings wisdom and heart as Alfred",
+            "The IMAX cinematography is absolutely stunning",
+            "A superhero film that transcends the genre",
+            "The social experiment with the ferries is brilliant",
+            "Morgan Freeman's Lucius Fox is perfectly portrayed",
+            "The film's examination of heroism is thought-provoking",
+            "Outstanding costume and production design",
+            "A rare sequel that surpasses its predecessor",
+            "The perfect blend of entertainment and substance"
         ],
         'tt0110912': [  # Pulp Fiction
             "Tarantino's masterpiece with incredible dialogue",
@@ -122,21 +162,61 @@ def get_sample_reviews_for_movie(movie_id):
             "Unforgettable scenes and memorable quotes",
             "Revolutionary filmmaking and direction",
             "A cult classic that defined the 90s",
-            "Brilliant ensemble cast and performances"
+            "Brilliant ensemble cast and performances",
+            "The Royale with Cheese scene is pure genius",
+            "Uma Thurman's Mia Wallace is iconic",
+            "The dance sequence is absolutely mesmerizing",
+            "Bruce Willis delivers one of his best performances",
+            "The adrenaline shot scene is unforgettable",
+            "Harvey Keitel's Winston Wolf is perfectly cast",
+            "The gold watch story is beautifully crafted",
+            "Christopher Walken's scene is absolutely brilliant",
+            "The diner sequence with Roth and Plummer is tense",
+            "Ving Rhames brings depth to Marsellus Wallace",
+            "The soundtrack perfectly complements every scene",
+            "The briefcase mystery adds intrigue throughout",
+            "Each story segment is perfectly structured",
+            "The dialogue feels natural yet stylized",
+            "The film's structure keeps you engaged throughout",
+            "Outstanding cinematography and visual style",
+            "The violence serves the story without being gratuitous",
+            "A film that rewards multiple viewings",
+            "The cultural impact of this film is immeasurable",
+            "A perfect example of independent filmmaking at its best"
         ]
     }
     
     # Default reviews for unknown movies
     default_reviews = [
         "Great movie with excellent acting and direction",
-        "Wonderful storyline and beautiful cinematography",
+        "Wonderful storyline and beautiful cinematography", 
         "Outstanding performances from the cast",
         "Brilliant film with amazing visual effects",
         "Engaging plot and well-developed characters",
+        "Exceptional writing and compelling narrative",
+        "Beautiful music score and sound design",
+        "Impressive production values and attention to detail",
+        "Strong emotional core and meaningful themes",
+        "Well-paced and expertly crafted film",
+        "Memorable characters and excellent dialogue",
+        "Stunning visuals and creative cinematography",
+        "Powerful performances from the entire ensemble",
+        "Thought-provoking story with depth and substance",
+        "Excellent direction and skilled filmmaking",
+        "Captivating from beginning to end",
+        "Perfect blend of entertainment and artistry",
+        "Remarkable achievement in cinema",
+        "Impressive technical aspects and craftsmanship",
+        "Emotionally resonant and deeply moving",
         "Some parts were slow but overall entertaining",
         "Good movie but could have been better",
-        "Interesting concept but poor execution",
-        "Disappointing compared to expectations",
+        "Interesting concept but uneven execution",
+        "Mixed feelings about the pacing and structure",
+        "Decent film with some memorable moments",
+        "Not bad but doesn't quite reach its potential",
+        "Watchable but forgettable in some ways",
+        "Disappointing compared to high expectations",
+        "Weak dialogue and poor character development",
         "Not the best but worth watching once"
     ]
     
@@ -242,7 +322,7 @@ def main():
             help="Enter a valid IMDb movie ID. Popular IDs: tt0111161, tt0468569, tt0110912"
         )
         
-        max_reviews = st.slider("Max reviews to analyze", 5, 30, 10)
+        max_reviews = st.slider("Max reviews to analyze", 10, 50, 30)
         
         if st.button("🔍 Analyze Movie Reviews", type="primary"):
             if movie_id:
